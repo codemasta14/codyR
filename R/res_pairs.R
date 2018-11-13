@@ -6,7 +6,7 @@ res_pairs <- function(my_lm){
     str_extract("~.*data =")%>%
     str_remove_all("~|, data =")%>%
     {if(str_detect(.,"I(.*)")){str_remove(.,"I\\(")%>%
-        str_remove("\\^\\d?.*\\)")}}%>%
+        str_remove("\\^\\d?.*\\)")} else return(.)}%>%
     str_split("[\\+\\-\\:]")%>%
     unlist%>%
     str_trim()%>%
@@ -19,14 +19,15 @@ res_pairs <- function(my_lm){
   binded = cbind(my_lm$residuals,filtered)
   pairs(right_join(binded,og_df),panel=panel.smooth)
 }
-#my_lm <- lm(volume~avgtemp:weekday+I(avgtemp^2):weekday+I(avgtemp^3):weekday,data=RailTrail)
+#my_lm <- lm(mpg~cyl,data=mtcars)
 
 #deparse(my_lm$call)%>%
 #  str_flatten()%>%
 #  str_extract("~.*data =")%>%
 #  str_remove_all("~|, data =")%>%
 #  {if(str_detect(.,"I(.*)")){str_remove(.,"I\\(")%>%
-#      str_remove("\\^\\d?.*\\)")}}%>%
+#     str_remove("\\^\\d?.*\\)")}
+#    else return(.)}%>%
 #  str_split("[\\+\\-\\:]")%>%
 #  unlist%>%
 #  str_trim()%>%
