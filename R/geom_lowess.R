@@ -1,3 +1,5 @@
+#Creates lowess curve lines on a ggplot. I eventually want this to be a ggproto object so that it's actually
+#Compatible with ggplot as a geometry, but that will come later.
 geom_lowess<- function(df,x,y){
   x <- enquo(x)
   y <- enquo(y)
