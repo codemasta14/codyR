@@ -15,7 +15,7 @@ isgud <- function(...)
                                   AIC=AIC(models[[i]]),
                                   BIC= BIC(models[[i]]),
                                   adj_R_squared=summary(models[[i]])$adj.r.squared,
-                 formula = str_extract(deparse(models[[i]]$call),"\\s\\w.*~.*,")%>%
+                 formula = str_extract(str_flatten(deparse(models[[i]]$call)),"\\s\\w.*~.*,")%>%
                    str_trim()%>%
                    str_remove(",")
                  ))
