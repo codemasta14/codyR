@@ -13,3 +13,7 @@ plus_model(my_lm,+cyl)
 my_lm <- lm(mpg~wt,mtcars)
 
 parse("lm(formula = mpg ~ wt, data = mtcars)")
+
+mtcars%>%
+  group_by(am)%>%
+  summarize(favstats(mpg))
