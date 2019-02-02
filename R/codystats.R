@@ -1,3 +1,11 @@
+#'@param data a tidy data set
+#'@param variable which variable in dataset do you want to examine?
+#'@param ... any variables you would like to group by
+#'@examples
+#' codystats(mtcars,mpg)
+#' codystats(mtcars,mpg,cyl)
+#' codystats(mtcars,mpg,cyl,am)
+
 require(dplyr)
 codystats <- function(data,variable,...){
   variable =enquo(variable)
