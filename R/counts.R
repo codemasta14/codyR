@@ -1,6 +1,3 @@
-#completes
-require(dplyr)
-
 counts = function(df,...){
   group_vars <- enquos(...)
   df%>%

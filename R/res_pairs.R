@@ -1,5 +1,7 @@
 #Adds residuals from an lm object to a pairs plot to compare added variable plots.
 res_pairs <- function(my_lm,...){
+  library(dplyr)
+  library(stringr)
   df <- str_remove_all(str_extract(str_flatten(deparse(my_lm$call)),"data = .*"),"data = |\\)")
 
   variables<- deparse(my_lm$call)%>%
@@ -25,8 +27,8 @@ res_pairs <- function(my_lm,...){
   pairs(right_join(binded,og_df),panel=panel.smooth,...)
 }
 
-lm1 <- lm(mpg~wt,mtcars)
+#lm1 <- lm(mpg~wt,mtcars)
 
-res_pairs(lm1,col=og_df$cyl)
+#res_pairs(lm1,col=og_df$cyl)
 
-pairs(mtcars,col=as.factor("cyl"))
+#pairs(mtcars,col=as.factor("cyl"))
