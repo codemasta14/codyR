@@ -8,16 +8,16 @@ create_changes = function(df, expr) {
 
   mutate(df,
          !!change_name := case_when(
-           lag(!!expr)!=!!expr ~T,
-           T ~ F
+           lag(!!expr)!=!!expr ~1,
+           T ~ 0
          ),
          !!up_name := case_when(
-           !!change & lag(!!expr)<!!expr ~T,
-           T ~ F
+           !!change & lag(!!expr)<!!expr ~1,
+           T ~ 0
          ),
          !!down_name := case_when(
-           !!change & lag(!!expr)>!!expr ~T,
-           T ~ F
+           !!change & lag(!!expr)>!!expr ~1,
+           T ~ 0
          ))
 
 
