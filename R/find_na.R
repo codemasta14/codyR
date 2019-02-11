@@ -10,7 +10,6 @@ list <- df%>%
   unlist()%>%
   unname()
 df%>%
-  filter(!!group %in% list)%>%
-  View()
+  filter(!!group %in% list)
 }
 
